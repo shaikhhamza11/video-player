@@ -1,0 +1,22 @@
+<div>
+    <h2 class='m-top m-left'>New Video</h2>
+    <form #form='ngForm' (ngSubmit)='onSubmitAddVideo(form.value)' class="well">
+
+        <div class="form-group  m-left">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" class="form-control" name='title' placeholder="title" ng-required="true" ngModel>
+        </div>
+        <div class="form-group  m-left">
+            <mat-label>URL</mat-label>
+            <input matInput type="text" class="form-control" name='url' placeholder="URL" ng-required="true" ngModel>
+        </div>
+        <div class="form-group  m-left">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" class="form-control" name='description' placeholder="Description" ng-required="true"
+                ngModel>
+        </div>
+
+        <button type="submit"  mat-raised-button mat-dialog-close color="primary" class="m-left">Save</button>
+        <button mat-raised-button mat-dialog-close color="warn" class="m-left">Cancel</button>
+    </form>
+</div>

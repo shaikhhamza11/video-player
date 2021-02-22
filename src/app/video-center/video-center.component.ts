@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges } from '@angular/core';
 import { Video } from '../video'
 import { VideoService } from '../video.service';
 import{Router} from '@angular/router'
+import {MatDialog,MatDialogConfig} from '@angular/material/dialog'
+import { VideoAddNewVideoComponent } from '../video-add-new-video/video-add-new-video.component'
 @Component({
   selector: 'app-video-center',
   templateUrl: './video-center.component.html',
@@ -15,7 +17,8 @@ public errorMessage;
   lastVideo:Video
    hideNewVideo:boolean=true;
   constructor(private videoService:VideoService,
-    private router:Router) { }
+    private router:Router,
+    private dialog:MatDialog) { }
 
   ngOnInit(): void {
    this.videoService.getVideos().subscribe((resVideo)=>{
@@ -27,28 +30,29 @@ public errorMessage;
     })
     
   }
+  getDialogValue(resNewVideo){
+    this.videos.push(resNewVideo)
+    this.selectedVideo=resNewVideo
+  }
 
   onSelectVideo(video:any){
     this.selectedVideo=video;
     this.hideNewVideo=true
     console.log(this.selectedVideo)
   }
-  onSubmitAddVideo(video:Video){
-    this.videoService.addVideo(video).subscribe(resNewVideo=>{
-      this.hideNewVideo=true
-      console.log(resNewVideo)
-      this.videos.push(resNewVideo);
-      this.selectedVideo=resNewVideo
-    })
-  }
+  // onSubmitAddVideo(video:Video){
+  //   this.videoService.addVideo(video).subscribe(resNewVideo=>{
+  //     this.hideNewVideo=true
+  //     console.log(resNewVideo)
+  //     this.videos.push(resNewVideo);
+  //     this.selectedVideo=resNewVideo
+  //   })
+  // }
   onUpdateVideoEvent(video:any){
     this.videoService.updateVideo(video).subscribe(resUpdatedVideo=>video=resUpdatedVideo);
     this.selectedVideo=null
   }
   
-  newVideo(){
-    this.hideNewVideo=false
-  }
   onDeleteVideoEvent(video:any){
     let videoArray=this.videos;
     this.videoService.deleteVideo(video)
@@ -61,6 +65,17 @@ public errorMessage;
     })
     this.selectedVideo=null
   }
-
+onResponseVideoEvent(video:any){
+  
+}
+  newVideo(){
+    
+    const dialogConfig= new MatDialogConfig()
+    dialogConfig.disableClose=true
+    dialogConfig.autoFocus=true
+    dialogConfig.width="60%"
+    let dialogRef=this.dialog.open(VideoAddNewVideoComponent,dialogConfig)
+    dialogRef.afterClosed().subscribe(result=>console.log(result))
+  }
 }
 // <iframe width="853" height="480" src="https://www.youtube.com/embed/lud7CUSTbyY?list=RDMM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

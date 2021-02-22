@@ -10,6 +10,7 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
 import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http'
 import { VideoService } from './video.service';
+import { VideoAddNewVideoComponent } from './video-add-new-video/video-add-new-video.component'
 import { SafePipe } from './safe.pipe';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button'
@@ -17,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatListModule} from '@angular/material/list'
 import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatDialogModule} from '@angular/material/dialog'
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import {MatDialogModule} from '@angular/material/dialog'
     VideoCenterComponent,
     VideoListComponent,
     VideoDetailComponent,
-    SafePipe
+    SafePipe,
+    VideoAddNewVideoComponent
    
   ],
   imports: [
@@ -42,6 +44,7 @@ import {MatDialogModule} from '@angular/material/dialog'
     MatDialogModule
   ],
   providers: [VideoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[VideoAddNewVideoComponent]
 })
 export class AppModule { }

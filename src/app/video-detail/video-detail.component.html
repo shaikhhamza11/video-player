@@ -7,15 +7,16 @@
         <div *ngIf="editTitle" class="form-group">
 
             <input matInput type="input" class="form-control m-left" name='title' [(ngModel)]="video.title"
-                placeholder="Title" required>
+                placeholder="Title" ng-required="true">
         </div>
         <h3 *ngIf="!editTitle" (click)="onTitleClick()" class='m-left'>{{video.title}}</h3>
         <div class="form-group">
             <input matInput type="input" class="form-control m-left" name='url' placeholder="URL"
-                [(ngModel)]="video.url" required>
+                [(ngModel)]="video.url" ng-required="true">
         </div>
         <div class="form-group">
-            <textarea class='m-left' matInput name="desc" rows="4" [(ngModel)]="video.description"></textarea>
+            <textarea class='m-left' matInput name="desc" rows="4" [(ngModel)]="video.description"
+                ng-required="true"></textarea>
         </div>
         <button mat-raised-button color="accent" class='but' type="button" (click)="updateVideo()">Update</button>
         <button mat-raised-button color="warn" class='but' type="button" (click)="deleteVideo()">Delete</button>
