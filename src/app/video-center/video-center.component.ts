@@ -78,4 +78,4 @@ onResponseVideoEvent(video:any){
     dialogRef.afterClosed().subscribe(result=>console.log(result))
   }
 }
-// <iframe width="853" height="480" src="https://www.youtube.com/embed/lud7CUSTbyY?list=RDMM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+//<iframe width="853" height="480" src="https://www.youtube.com/embed/lud7CUSTbyY?list=RDMM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
